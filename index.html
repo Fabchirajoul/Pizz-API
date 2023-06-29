@@ -32,92 +32,92 @@
 
                             <div class="col l5 m12 s12" style="text-align: center;">
 
-                               <!-- USER'S INFORMATION STARTS HERE -->
+                                <!-- USER'S INFORMATION STARTS HERE -->
 
-                        <div x-text="message"></div><br>
-                        Invoice Number: <strong x-text="cartId"></strong>
+                                <div x-text="message"></div><br>
+                                Invoice Number: <strong x-text="cartId"></strong>
 
-                        <div class="input">
-                            Customer Name: <input type="text" x-model="username" placeholder="Surname and Initials">
-                        </div>
+                                <div class="input">
+                                    Customer Name: <input type="text" x-model="username"
+                                        placeholder="Surname and Initials">
+                                </div>
 
-                        Pizza from API: <strong x-text="pizzas.length"></strong>
-                        <div>
-                            Total: R<strong x-text="cart.total.toFixed(2)"></strong>
-                        </div>
+                                Pizza from API: <strong x-text="pizzas.length"></strong>
+                                <div>
+                                    Total: R<strong x-text="cart.total.toFixed(2)"></strong>
+                                </div>
 
 
                             </div>
 
                             <!-- USER INFORMATION ENDS HERE -->
-        
-                                <!-- FINCTIONALITY TO THE BUTTON STARTS HERE -->
 
-                                <div class="l7 m12 s12" style="text-align: right;" style="text-align: center;">
-                                    <div>
+                            <!-- FINCTIONALITY TO THE BUTTON STARTS HERE -->
 
-                                        <div x-show="cart.total.toFixed(2)>0">
-                                            <table class="right"
-                                                style="width: 50%; margin-left: auto; margin-right: auto;">
+                            <div class="l7 m12 s12" style="text-align: right;" style="text-align: center;">
+                                <div>
+
+                                    <div x-show="cart.total.toFixed(2)>0">
+                                        <table class="right" style="width: 50%; margin-left: auto; margin-right: auto;">
+                                            <tr>
+                                                <th>Flavour</th>
+                                                <th>Size</th>
+                                                <th>Add/Reduce</th>
+                                                <th>Quantity</th>
+                                                <th>Sum(R)</th>
+                                            </tr>
+
+                                            <template x-for="pizza in cart.pizzas">
                                                 <tr>
-                                                    <th>Flavour</th>
-                                                    <th>Size</th>
-                                                    <th>Add/Reduce</th>
-                                                    <th>Quantity</th>
-                                                    <th>Sum(R)</th>
-                                                </tr>
-
-                                                <template x-for="pizza in cart.pizzas">
-                                                    <tr>
-                                                        <td x-text="pizza.flavour"></td>
-                                                        <td x-text="pizza.size"></td>
-                                                        <td><button x-on:click="add(pizza)">+</button>
-                                                            <button x-on:click="remove(pizza)">-</button>
-                                                        </td>
-                                                        <td x-text="pizza.qty"></td>
-                                                        <td x-text="pizza.total.toFixed(2)"></td>
-                                                    </tr>
-
-                                                </template>
-                                                <tr>
-                                                    <td>Total</td>
-                                                    <td>
-                                                        R<span x-text="cart.total.toFixed(2)"></span>
+                                                    <td x-text="pizza.flavour"></td>
+                                                    <td x-text="pizza.size"></td>
+                                                    <td><button x-on:click="add(pizza)">+</button>
+                                                        <button x-on:click="remove(pizza)">-</button>
                                                     </td>
+                                                    <td x-text="pizza.qty"></td>
+                                                    <td x-text="pizza.total.toFixed(2)"></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div x-show="payNow">
-                                                            <div x-text="paymentMessage" style="color: blue;">Message....</div>
-                                                            <div>
-                                                                <div>
-                                                                    <label for="">Enter Amount</label>
-                                                                    <input class="input" type="number"
-                                                                        placeholder="Pay Amount"
-                                                                        x-model="paymentAmount">
-                                                                </div>
-                                                                <div>
-                                                                    <button x-on:click="pay"
-                                                                        class="waves-effect waves-light btn">
-                                                                        Pay Now</button>
-                                                                </div>
 
-                                                            </div>
+                                            </template>
+                                            <tr>
+                                                <td>Total</td>
+                                                <td>
+                                                    R<span x-text="cart.total.toFixed(2)"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div x-show="payNow">
+                                                        <div x-text="paymentMessage" style="color: blue;">Message....
                                                         </div>
+                                                        <div>
+                                                            <div>
+                                                                <label for="">Enter Amount</label>
+                                                                <input class="input" type="number"
+                                                                    placeholder="Pay Amount" x-model="paymentAmount">
+                                                            </div>
+                                                            <div>
+                                                                <button x-on:click="pay"
+                                                                    class="waves-effect waves-light btn">
+                                                                    Pay Now</button>
+                                                            </div>
 
-                                                    <td>
-                                                        <button x-show="!payNow" x-on:click="payNow=true"
-                                                            class="waves-effect waves-light btn">
-                                                            Check Out
-                                                        </button>
-                                                    </td>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
+                                                        </div>
+                                                    </div>
+
+                                                <td>
+                                                    <button x-show="!payNow" x-on:click="payNow=true"
+                                                        class="waves-effect waves-light btn">
+                                                        Check Out
+                                                    </button>
+                                                </td>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
-                                <!-- FUNCTIONALITY TO THE BUTTON ENDS HERE -->
+                            </div>
+                            <!-- FUNCTIONALITY TO THE BUTTON ENDS HERE -->
                         </div>
                     </section>
                     <!-- ThIS SECTION OF IS FOR THE LIST OF ITEMS PUCHASED -->
@@ -142,7 +142,8 @@
                                         </tr>
                                     </template>
                                 </table>
-                                <!-- LIST OF ITEMS PURCHASED ENDS HERE -->
+                            </div>
+                            <!-- LIST OF ITEMS PURCHASED ENDS HERE -->
                     </section>
                     <br>
 
@@ -219,21 +220,24 @@
     <div class="card">
 
         <section>
-  
+
             <footer class="page-footer">
-            
-            <div class="footer-copyright">
-             <div class="row">
-              <div class="col m8 l12 s12" style="text-align: center;">
-                © 2023 Copyright Reserved<br>
-                <a class="grey-text text-lighten-4 center" href="#!">Fabchi RJ&nbsp;&nbsp; <strong>Tel:</strong> +27633829963&nbsp;&nbsp; <strong>Email:</strong> fabchirajoul@gmail.com</a><br>
-                <a class="grey-text text-lighten-4 right" href="#!">UJ & ACCENTURE WORK READINESS PROGRAM</a>
+
+                <div class="footer-copyright">
+                    <div class="row">
+                        <div class="col m8 l12 s12" style="text-align: center;">
+                            © 2023 Copyright Reserved<br>
+                            <a class="grey-text text-lighten-4 center" href="#!">Fabchi RJ&nbsp;&nbsp;
+                                <strong>Tel:</strong> +27633829963&nbsp;&nbsp; <strong>Email:</strong>
+                                fabchirajoul@gmail.com</a><br>
+                            <a class="grey-text text-lighten-4 right" href="#!">UJ & ACCENTURE WORK READINESS
+                                PROGRAM</a>
+                        </div>
+                    </div>
                 </div>
-             </div>
-            </div>
             </footer>
-            
-          </section>
+
+        </section>
     </div>
 
 
