@@ -129,15 +129,17 @@
 
                                 <!-- LIST OF ITEMS PURCHASED STARTS HERE -->
                                 <table>
+                                   
                                     <template x-for="pizza in cart.pizzas">
+                                       
                                         <tr style="text-align: center; background-color: red">
-                                            <th>Flavour</th>
-                                            <td x-text="pizza.flavour">Flavor</td>
-                                            <th>Image</th>
+                                            
+                                            <td x-text="pizza.flavour"></td>
+                                           
                                             <td><img x-bind:src=" pizzaImage(pizza)" alt="pizza" width="40px"></td>
-                                            <th>Size</th>
+                                            
                                             <td x-text="pizza.size"></td>
-                                            <th>Price</th>
+                                            
                                             <td x-text="pizza.price"></td>
                                         </tr>
                                     </template>
@@ -150,8 +152,16 @@
                     <h4 style="text-align: center;">FEATURE MENU</h4>
                     <div>
                         <table>
+                            <tr>
+                                <th>IMAGE</th>
+                                <th>FLAVOUR</th>
+                                <th>SIZE</th>
+                                <th>PRICE</th>
+                                <th>PLACE ORDER</th>
+                            </tr>
                             <!-- LOOPING THROUGH THE PIZZA STARTS HERE FOR THE SMALL PIZZA ALONE -->
                             <template x-for="pizza in pizzas">
+                             
                                 <template x-if="pizza['size']=='small'">
 
                                     <tr style="text-align: center; background-color: rgb(246, 255, 0)">
@@ -190,6 +200,7 @@
                             <!-- LOOPING THROUGH THE PIZZA STARTS HERE FOR THE LARGE PIZZA ALONE -->
 
                             <template x-for="pizza in pizzas">
+
                                 <template x-if="pizza['size']=='large'">
 
                                     <tr style="text-align: center; background-color: rgb(255, 0, 251)">

@@ -63,7 +63,7 @@ document.addEventListener('alpine:init', () => {
           axios
             .post('https://pizza-api.projectcodex.net/api/pizza-cart/add', params)
             .then(() => {
-              this.message = "Pizza added to the cart"
+              this.message = "You added an item"
               this.showCart();
             })
             .then(() => {
@@ -86,7 +86,7 @@ document.addEventListener('alpine:init', () => {
           axios
             .post('https://pizza-api.projectcodex.net/api/pizza-cart/remove', params)
             .then(() => {
-              this.message = "Pizza removed from the cart"
+              this.message = "You removed an item"
               this.showCart();
             })
             .catch(err => alert(err));
