@@ -15,7 +15,7 @@ document.addEventListener("alpine:init", () => {
               localStorage["username"] = this.username;
             this.createCart();
           } else {
-            alert("username is too short");
+            alert("Please username is too short");
           }
         },
         logout() {

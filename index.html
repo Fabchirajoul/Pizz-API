@@ -34,7 +34,7 @@
                         <h1 x-text="title"></h1>
 
                         <div>
-                            Username:<input type="text" x-model="username">
+                            Username:<input type="text" x-model="username" placeholder="Enter your username here">
                             <button x-on:click="login" x-show="!cartId">Login</button>
                             <button x-on:click="logout" x-show="cartId">logout</button>
                         </div><br><br>
