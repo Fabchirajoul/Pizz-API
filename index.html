@@ -49,9 +49,14 @@
 
                         <div x-show="cartTotal>0">
                             <h2>Your cart</h2>
-                            <div class="message" x-text="message" style="text-align: center; background-color: rgb(246, 255, 0)">message here</div>
+                            <div  x-text="message" style="text-align: center; background-color: rgb(246, 255, 0)">message here</div><br>
+
+                            <div x-show="change>0" style="text-align: center; background-color: white" width="10%">
+                                Your change is R<span x-text="change.toFixed(2)" >change comes here</span>
+                            </div>
+                           
                             <table>
-                                <tr >
+                                <tr>
                                     <th>Flavour</th>
                                     <th>Size</th>
                                     <th>Price</th>
