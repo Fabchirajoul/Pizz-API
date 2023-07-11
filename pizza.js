@@ -149,13 +149,16 @@ document.addEventListener("alpine:init", () => {
               this.message = "Payment received";
               this.message = this.username +" , made a successful purchase for his/her order!";
               this.change = this.paymentAmount - this.cartTotal;
+  
               setTimeout(() => {
                 this.message = "";
+                localStorage["cartId"] = "";
+                localStorage["username"] = "";
+                this.change = "";
                 this.cartPizzas = [];
                 this.cartTotal = 0.0;
                 this.cartId = "";
                 this.paymentAmount = 0;
-                localStorage["cartId"] = "";
                 this.createCart();
               }, 4000);
             }
