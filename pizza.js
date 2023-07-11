@@ -1,13 +1,12 @@
 document.addEventListener("alpine:init", () => {
   Alpine.data("pizzaCart", () => {
     return {
-      title: "RJ'S PIZZA API",
+      title: "Pizza cart API",
       pizzas: [],
       username: "",
       cartId: "",
       cartPizzas: [],
       paymentAmount: 0.0,
-      
       cartTotal: 0.0,
       message: "",
       login() {
@@ -59,11 +58,8 @@ document.addEventListener("alpine:init", () => {
         return axios.post(
           "https://pizza-api.projectcodex.net/api/pizza-cart/add",
           {
-              
-              cart_code: this.cartId,
+            cart_code: this.cartId,
             pizza_id: pizzaId,
-            
-            
           }
         );
       },
@@ -74,7 +70,6 @@ document.addEventListener("alpine:init", () => {
           {
             cart_code: this.cartId,
             pizza_id: pizzaId,
-            
           }
         );
       },
@@ -125,7 +120,6 @@ document.addEventListener("alpine:init", () => {
         //   alert(pizzaid)
         this.addPizza(pizzaId).then(() => {
           this.showCartData();
-          this.message= this.username  +" , added an item to cart "
         });
       },
 
@@ -133,7 +127,6 @@ document.addEventListener("alpine:init", () => {
         //   alert(pizzaid)
         this.removePizza(pizzaId).then(() => {
           this.showCartData();
-          this.message= this.username  +" , removed an item from cart "
         });
       },
 
