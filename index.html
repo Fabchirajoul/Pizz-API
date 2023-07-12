@@ -41,7 +41,14 @@
                         <div x-show="cartId">
                             cart Code : <span x-text="cartId"></span><br><br>
                             Total Pizza Availabe: <strong x-text="pizzas.length" x-show="username  && cartId"></strong><br><br>
-                            R<span x-text="cartTotal"></span>
+                            
+                        </div>
+                        <div x-show="cartTotal>0">
+                            <div  x-text="message" style="text-align: center;">message here</div><br>
+                            New Total is R<span x-text="cartTotal"></span>
+                            <div x-show="change>0" style="text-align: center;" width="10%">
+                                Your change is R<span x-text="change.toFixed(2)" >change comes here</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Funtionality to our addding button starts here -->
@@ -49,11 +56,7 @@
 
                         <div x-show="cartTotal>0">
                             <h2>Your cart</h2>
-                            <div  x-text="message" style="text-align: center; background-color: rgb(246, 255, 0)">message here</div><br>
-
-                            <div x-show="change>0" style="text-align: center; background-color: white" width="10%">
-                                Your change is R<span x-text="change.toFixed(2)" >change comes here</span>
-                            </div>
+                           
                            
                             <table>
                                 <tr>

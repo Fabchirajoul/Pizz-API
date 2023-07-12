@@ -126,7 +126,7 @@ document.addEventListener("alpine:init", () => {
           //   alert(pizzaid)
           this.addPizza(pizzaId).then(() => {
             this.showCartData();
-            this.message= this.username  +" , added an item to cart "
+            this.message= this.username  +" , you added an item to your cart "
           });
         },
   
@@ -134,7 +134,7 @@ document.addEventListener("alpine:init", () => {
           //   alert(pizzaid)
           this.removePizza(pizzaId).then(() => {
             this.showCartData();
-            this.message= this.username  +" , removed an item from cart "
+            this.message= this.username  +" , you removed an item from your cart "
           });
         },
   
