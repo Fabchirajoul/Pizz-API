@@ -44,20 +44,21 @@
                             
                         </div>
                         <div x-show="cartTotal>0">
-                            <div  x-text="message" style="text-align: center;">message here</div><br>
-                            New Total is R<span x-text="cartTotal"></span>
-                            <div x-show="change>0" style="text-align: center;" width="10%">
+                            <div  x-text="message" style="background-color: rgba(0, 255, 102, 0.482); max-width: fit-content;">message here
+                            </div><br>
+                            <div style="background-color: blueviolet; max-width: fit-content; max-height: 20%;">
+                                New Total is R<span x-text="cartTotal" ></span>
+                            </div>
+                            <div x-show="change>0">
                                 Your change is R<span x-text="change.toFixed(2)" >change comes here</span>
                             </div>
                         </div>
                     </div>
                     <!-- Funtionality to our addding button starts here -->
-                    <div class="col l8 m12 s12" style="text-align: center; background-color: blue" x-cloak>
+                    <div class="col l8 m12 s12" style="text-align: center;" x-cloak>
 
                         <div x-show="cartTotal>0">
-                            <h2>Your cart</h2>
-                           
-                           
+                            <h2>Your cart</h2>  
                             <table>
                                 <tr>
                                     <th>Flavour</th>
