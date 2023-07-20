@@ -55,3 +55,20 @@ GET https://pizza-api.projectcodex.net/api/pizza-cart/create?username=Fabchirajo
 GET https://pizza-api.projectcodex.net/api/pizza-cart/create?username=Fabchirajoul/active
 
 
+### feature pizza
+
+GET https://pizza-api.projectcodex.net/api/pizzas/featured
+content-Type: application/json
+
+{
+    "username": "Fabchirajoul",
+    "pizza_id": 11
+}
+
+
+POST https://pizza-api.projectcodex.net/api/pizzas/featured
+
+GET https://pizza-api.projectcodex.net/api/pizza-cart/username/tswelo
+content-type: application/json
+
+
