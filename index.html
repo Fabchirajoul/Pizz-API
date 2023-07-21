@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="pizza.js"></script>
+    <script src="history.js" defer></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
@@ -22,7 +23,11 @@
             display: none !important;
         }
 
-        
+        .message{
+
+            width: auto;
+            padding: 10em;
+        }
     </style>
 </head>
 
@@ -37,8 +42,9 @@
 
                         <div>
                             Username:<input type="text" x-model="username" placeholder="Enter your username here">
-                            <button x-on:click="login" x-show="!cartId && !open" class="waves-effect waves-light btn">Login</button>
-                           
+                            <button x-on:click="login" x-show="!cartId && !open"
+                                class="waves-effect waves-light btn">Login</button>
+
                         </div><br><br>
                         <div x-show="cartId">
                             cart Code : <span x-text="cartId"></span><br><br>
@@ -46,24 +52,31 @@
                                 x-show="username  && cartId"></strong><br><br>
 
                         </div>
-                        
+
                     </div>
                     <!-- Funtionality to our addding button starts here -->
                     <div class="col l8 m12 s12" style="text-align: right;" x-cloak>
-                        <div >
-                           <div x-show="cartId">
-                            <label class="waves-effect waves-light btn" x-show="username.length>0">Welcome, <span x-text="username" ></span></label>
-                            <button x-on:click="open=!open" class="waves-effect waves-light btn" x-show="cartTotal>0">Show/Hide CART</button>
-                            <label class="waves-effect waves-light btn" x-show="cartTotal>0">R<span x-text="cartTotal" ></span></label>
-                            <button x-on:click="logout" class="waves-effect waves-light btn">logout</button>
-                           </div>
+                        <div>
+                            <div x-show="cartId">
+                                <label class="waves-effect waves-light btn" x-show="username.length>0">Welcome, <span
+                                        x-text="username"></span></label>
+                                <button x-on:click="open=!open" class="waves-effect waves-light btn"
+                                    x-show="cartTotal>0">Show/Hide CART</button>
+                                <label class="waves-effect waves-light btn" x-show="cartTotal>0">R<span x-text="cartTotal"></span></label>
 
-                           <div x-text="message">message here
+                                <!-- <button x-on:click="opencartPizzas=!opencartPizzas" class="waves-effect waves-light btn"
+                                x-show="username && cartId">Historical cart</button> -->
+
+                                <button x-on:click="logout" class="waves-effect waves-light btn"
+                                    x-show="username.length>0">logout</button>
+                            </div><br>
+
+                            <div x-text="message" style="text-align: center;">message here
                             </div>
 
                             <div x-show="open && cartTotal>0">
-                                
-                                <table >
+
+                                <table>
                                     <tr>
                                         <th>Flavour</th>
                                         <th>Size</th>
@@ -107,40 +120,13 @@
                             </div>
                         </div>
 
-                        
+
                     </div>
                 </div>
             </div>
             </div>
         </section>
-        <!-- For the feature pizza section -->
-        <!-- <section>
-            <div class="card">
-                <div class="row">
-                   <template x-for="pizza in featuredPizzas">
-                    <div class="col l4 s12 m12">
-
-                        <span x-text="pizza.featured"></span>
-                        
-                    </div>
-                   </template>
-
-                </div>
-
-            </div>
-
-        </section> -->
-
-        <!-- This section is for the historical carts -->
-
-        
-
-
-
-        <!-- Historical carts ends here -->
-
-        
-
+       
         <section>
             <div class="card">
                 <div class="row">

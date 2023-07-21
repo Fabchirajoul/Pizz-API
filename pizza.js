@@ -9,9 +9,8 @@ document.addEventListener("alpine:init", () => {
       cartPizzas: [],
       paymentAmount: 0.0,
       change: 0.0,
-      historical_carts: [],
-      userHistory: "",
-      open:false,
+      open: false,
+      
 
       cartTotal: 0.0,
       message: "",
@@ -107,7 +106,8 @@ document.addEventListener("alpine:init", () => {
             // console.log(result.data);
             this.pizzas = result.data.pizzas;
             //code here..
-          });
+          })
+          
 
         if (!this.cartId) {
           this.createCart().then(() => {
@@ -115,13 +115,6 @@ document.addEventListener("alpine:init", () => {
           });
         }
       },
-
-      // History starts here
-
-
-      // History ends here
-
-      
       
 
       //   Adds Pizza to card
