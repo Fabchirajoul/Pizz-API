@@ -73,6 +73,11 @@
 
                             <div x-text="message" style="text-align: center;">message here
                             </div>
+                            
+
+                            <div  style="text-align: center;"  x-show="change>0">
+                                Your change is R<span x-text="change.toFixed(2)"></span>
+                            </div>
 
                             <div x-show="open && cartTotal>0">
 
