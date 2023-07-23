@@ -10,7 +10,9 @@ document.addEventListener("alpine:init", () => {
       paymentAmount: 0.0,
       change: 0.0,
       open: false,
-      
+      displayHistory: false,
+      historyCartsIds: [],
+      pastOrderedPizzas: [],
 
       cartTotal: 0.0,
       message: "",
@@ -87,12 +89,35 @@ document.addEventListener("alpine:init", () => {
           }
         );
       },
+
+      pizzaImage(pizza) {
+        return `./images/${pizza.size}.png`;
+      },
       showCartData() {
         this.getCart().then((result) => {
           const cartData = result.data;
           this.cartPizzas = cartData.pizzas;
           this.cartTotal = cartData.total.toFixed(2);
         });
+      },
+
+      featuredpizzas() {
+        axios
+          .get(
+            "https://pizza-api.projectcodex.net/api/pizzas/featured?username=XolaniSibisi"
+          )
+          .then((result) => {
+            this.featuredpizzas = result.data.pizzas;
+          });
+      },
+
+      postfeaturedpizzas() {
+        axios
+          .post("https://pizza-api.projectcodex.net/api/pizzas/featured", {
+            username: "Fabchirajoul",
+            pizza_id: pizzaId,
+          })
+          .then(() => this.featuredPizzas());
       },
 
       init() {
@@ -106,16 +131,47 @@ document.addEventListener("alpine:init", () => {
             // console.log(result.data);
             this.pizzas = result.data.pizzas;
             //code here..
-          })
-          
+          });
 
         if (!this.cartId) {
           this.createCart().then(() => {
             this.showCartData();
           });
         }
+        this.featuredPizzas();
       },
-      
+      orderHistory() {
+        const orderHistoryUrrl = `https://pizza-api.projectcodex.net/api/pizza-cart/username/${this.username}`;
+        axios.get(orderHistoryUrrl).then((result) => {
+          this.historyCartsIds = result.data.filter(
+            (cart) => cart.status === "paid"
+          );
+          this.activateDisplayHistory();
+        });
+      },
+      historyPizzas() {
+        this.orderHistory();
+        this.orderHistory();
+      },
+
+      getPastOrders(CartCode) {
+        const getCartURLl = `https://pizza-api.projectcodex.net/api/pizza-cart/${CartCode}/get`;
+        return axios.get(getCartURLl).then((result) => {
+          this.pastOrderedPizzas.push({
+            pizzas: result.data.pizzas,
+            total: result.data.total,
+            cartId: result.data.id,
+          });
+        });
+      },
+      activateDisplayHistory() {
+        this.displayHistory = true;
+        this.cartDisplayed = true;
+      },
+      newOrder() {
+        this.displayHistory = false;
+        this.cartDisplayed = false;
+      },
 
       //   Adds Pizza to card
 
@@ -123,17 +179,26 @@ document.addEventListener("alpine:init", () => {
         //   alert(pizzaid)
         this.addPizza(pizzaId).then(() => {
           this.showCartData();
-          this.message = this.username + " , you added an item to your cart ";
+
+          this.message =
+            this.username +
+            " , you added " +
+            this.pizza.flavour +
+            " to your cart";
           setTimeout(() => (this.message = ""), 3000);
         });
+        return this.featuredPizzas();
       },
 
       removePizzaFromCart(pizzaId) {
         //   alert(pizzaid)
         this.removePizza(pizzaId).then(() => {
           this.showCartData();
-          this.message =
-            this.username + " , you removed an item from your cart ";
+          this.message = this.message =
+            this.username +
+            " , you removed " +
+            this.pizza.flavour +
+            " from your cart";
           setTimeout(() => (this.message = ""), 3000);
         });
       },
