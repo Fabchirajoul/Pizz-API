@@ -10,7 +10,7 @@ document.addEventListener("alpine:init", () => {
       paymentAmount: 0.0,
       change: 0.0,
       open: false,
-      displayHistory: false,
+      History: false,
       historyCartsIds: [],
       pastOrderedPizzas: [],
 
@@ -140,38 +140,6 @@ document.addEventListener("alpine:init", () => {
         }
         this.featuredPizzas();
       },
-      orderHistory() {
-        const orderHistoryUrrl = `https://pizza-api.projectcodex.net/api/pizza-cart/username/${this.username}`;
-        axios.get(orderHistoryUrrl).then((result) => {
-          this.historyCartsIds = result.data.filter(
-            (cart) => cart.status === "paid"
-          );
-          this.activateDisplayHistory();
-        });
-      },
-      historyPizzas() {
-        this.orderHistory();
-        this.orderHistory();
-      },
-
-      getPastOrders(CartCode) {
-        const getCartURLl = `https://pizza-api.projectcodex.net/api/pizza-cart/${CartCode}/get`;
-        return axios.get(getCartURLl).then((result) => {
-          this.pastOrderedPizzas.push({
-            pizzas: result.data.pizzas,
-            total: result.data.total,
-            cartId: result.data.id,
-          });
-        });
-      },
-      activateDisplayHistory() {
-        this.displayHistory = true;
-        this.cartDisplayed = true;
-      },
-      newOrder() {
-        this.displayHistory = false;
-        this.cartDisplayed = false;
-      },
 
       //   Adds Pizza to card
 
@@ -201,6 +169,38 @@ document.addEventListener("alpine:init", () => {
             " from your cart";
           setTimeout(() => (this.message = ""), 3000);
         });
+      },
+
+      orderHistory() {
+        const orderHistoryUrrl = `https://pizza-api.projectcodex.net/api/pizza-cart/username/${this.username}`;
+        axios.get(orderHistoryUrrl).then((result) => {
+          this.historyCartsIds = result.data.filter(
+            (cart) => cart.status === "paid"
+          );
+          this.activateDisplayHistory();
+        });
+      },
+      historyPizzas() {
+        this.orderHistory();
+        this.orderHistory();
+      },
+      getPastOrders(CartCode) {
+        const getCartUrll = `https://pizza-api.projectcodex.net/api/pizza-cart/${CartCode}/get`;
+        return axios.get(getCartUrll).then((result) => {
+          this.pastOrderedPizzas.push({
+            pizzas: result.data.pizzas,
+            total: result.data.total,
+            cartId: result.data.id,
+          });
+        });
+      },
+      activateDisplayHistory() {
+        this.displayHistory = true;
+        this.cartDisplayed = true;
+      },
+      newOrder() {
+        this.displayHistory = false;
+        this.cartDisplayed = false;
       },
 
       payForCart() {

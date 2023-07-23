@@ -67,7 +67,7 @@
                                     x-show="cartTotal>0">Show/Hide CART</button>
 
 
-                                <button x-on:click="displayHistory=!displayHistory" class="waves-effect waves-light btn"
+                                <button x-on:click="History=!History" class="waves-effect waves-light btn"
                                     x-show="username && cartId">Historical cart</button>
 
                                 <button x-on:click="logout" class="waves-effect waves-light btn"
@@ -140,7 +140,7 @@
             <div class="card">
                 <div class="row">
                     
-                    <div class="col l12 m12 s12" x-show="displayHistory" style="text-align: center;">
+                    <div class="col l12 m12 s12" x-show="History" style="text-align: center;">
                         <p><b>HISTORICAL ORDER</b></hp>
                             <template x-for="cart in historyCartsIds">
                                 <div x-init="getPastOrders(cart.cart_code)"></div>
